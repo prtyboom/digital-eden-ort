@@ -1,0 +1,76 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\geometry{top=2cm, bottom=2cm, left=2.5cm, right=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Digital Eden / ORT Simulation}
+\lhead{Fedor Kapitanov}
+\cfoot{\thepage}
+
+\title{\textbf{Digital Eden: Computational Evidence for Phase Transitions in Consensus Reality}\\
+\large Agent-Based Simulation of Ontological Resolution Theory}
+\author{\textbf{Fedor Kapitanov} \\ Independent Researcher, Moscow \\ \texttt{prtyboom@gmail.com}}
+\date{December 2025}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We present the results of "Digital Eden" — an agent-based simulation designed to test the sociological and physical implications of Ontological Resolution Theory (ORT). By modeling reality as a weighted consensus field $\varepsilon(x,t)$ with high inertia, we investigate the conditions required for a local phase transition. We demonstrate that a single high-coherence node (Operator), supported by a small resonant cluster, can overcome the inertia of a hostile environment governed by 99\% noise. The simulation confirms the non-linear nature of belief dynamics: signal coherence dominates over population size.
+\end{abstract}
+
+\section{Introduction}
+Modern physics posits a fundamental divide between the observer and the observed. Ontological Resolution Theory (ORT) removes this divide, postulating that reality is a computational process of "resolving" a fundamental superposition into localized facts.
+
+In this framework:
+\begin{itemize}
+    \item \textbf{The Absolute} corresponds to a vacuum state $\varepsilon = 1$ (Maximum Entropy).
+    \item \textbf{Physical Reality} corresponds to a deviation $\delta = 1 - \varepsilon$.
+    \item \textbf{Gravity} is the thermodynamic pressure of the system trying to return to $\varepsilon = 1$.
+\end{itemize}
+
+\section{The Engine: Digital Eden}
+To test this hypothesis, we developed an open-source simulation engine. The reality field $\varepsilon_i$ evolves according to a discrete update rule combining inertia (history) and signal (observation):
+\begin{equation}
+    \varepsilon_i(t+1) = I \cdot \varepsilon_i(t) + (1 - I) \cdot S_{collective}
+\end{equation}
+where $I \in [0, 1]$ is the Inertia coefficient.
+
+\section{Experiment: The Gethsemane Scenario}
+We modeled a high-inertia environment ($I=0.95$) populated by:
+\begin{itemize}
+    \item \textbf{The Crowd (NPCs):} $N=200$, Coherence $C=1$, Worldview $\varepsilon \approx 0.2$.
+    \item \textbf{The Operator (Agent X):} $N=1$, Coherence $C=50$, Worldview $\varepsilon = 1.0$.
+    \item \textbf{The Apostles:} $N=12$, Coherence $C=5$, Worldview $\varepsilon = 0.9$.
+\end{itemize}
+
+\textbf{Objective:} To determine if the Operator can sustain a local region of $\varepsilon \approx 1$ against the overwhelming pressure of the Crowd.
+
+\section{Results}
+The simulation was run for $T=500$ ticks. The results are visualized in Figure 1.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{gethsemane_result.png}
+    \caption{Evolution of the Consensus Field. The bright vertical stream indicates the Operator's sustained high-reality signal piercing through the inertia.}
+    \label{fig:results}
+\end{figure}
+
+\section{Conclusion}
+The "Gethsemane" experiment proves computationally that:
+\begin{quote}
+    \textit{"One does not need to be the majority to change the world. One needs to be the strongest signal."}
+\end{quote}
+
+The simulation code is available at: \url{https://github.com/prtyboom/digital-eden-ort}
+
+\end{document}
