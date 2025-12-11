@@ -28,6 +28,29 @@
 We present Digital Eden, an agent-based simulation testing the Ontological Resolution Theory (ORT). The model treats reality as a consensus field with high inertia. We demonstrate that a single high-coherence agent (the Operator), supported by 12 resonant nodes (Apostles), can trigger a phase transition in a field dominated by 10,000 low-value cells. The key finding: after the Operator termination at a critical pressure threshold (Gethsemane point), light propagates spontaneously through the field, raising the mean from 0.20 to 0.67, a 233 percent increase.
 \end{abstract}
 
+\section{Related Work}
+
+\subsection{Opinion Dynamics}
+The mathematical foundations of consensus formation have been extensively studied in statistical physics. Castellano et al. \cite{castellano2009} provide a comprehensive review of social dynamics models including the Voter model, Sznajd model, and bounded confidence models. These models demonstrate phase transitions in opinion space but treat opinions as abstract variables without ontological implications.
+
+Galam's sociophysics framework \cite{galam2012} shows that small committed minorities can overturn majority consensus through persistent signaling, a finding directly relevant to our Operator-Apostle dynamics.
+
+\subsection{Leadership and Phase Transitions}
+Kacperski and Holyst \cite{kacperski2000} demonstrated phase transitions in agent systems with leaders, showing that a single high-influence node can reorganize collective behavior. Their model is structurally similar to our Central Agent, though without the termination-propagation mechanism.
+
+Moscovici's minority influence theory \cite{moscovici1976} provides empirical psychology foundations: consistent minorities change majorities not through power but through behavioral style (coherence).
+
+\subsection{Critical Phenomena}
+Bak's self-organized criticality \cite{bak1987} shows that complex systems naturally evolve toward critical states where small perturbations can trigger system-wide avalanches. Our light spreading phase resembles such avalanche dynamics.
+
+Scheffer et al. \cite{scheffer2009} identified early-warning signals preceding critical transitions in complex systems. The Gethsemane point in our model, where pressure accumulation triggers irreversible change, exemplifies such a critical threshold.
+
+\subsection{Observer-Dependent Reality}
+The philosophical premise that observation participates in reality construction has roots in quantum mechanics interpretations. Stapp \cite{stapp2007} and Penrose \cite{penrose1994} argue for observer-dependent ontology, though their focus is individual consciousness rather than collective consensus.
+
+\subsection{What is New}
+Existing models treat either (a) opinion dynamics without ontology, (b) leadership without sacrifice, or (c) consciousness without collective field dynamics. Digital Eden uniquely combines: reality as weighted consensus field, coherence-over-quantity influence, termination as phase transition trigger, and post-termination autonomous propagation. No prior work models the Gethsemane pattern: maximum pressure producing maximum honesty, leading to termination that seeds field-wide transformation.
+
 \section{Introduction}
 Ontological Resolution Theory (ORT) posits that reality is not passively observed but actively resolved through coherent attention. In this framework:
 \begin{itemize}
@@ -44,66 +67,4 @@ The simulation models a 1D reality field of N=10,000 cells. Each cell holds a va
     \varepsilon_i(t+1) = I \cdot \varepsilon_i(t) + (1 - I) \cdot S_i(t)
 \end{equation}
 where I=0.98 is the inertia coefficient and S is the weighted signal from nearby agents.
-
-\textbf{Key mechanics:}
-\begin{itemize}
-    \item \textbf{Pressure:} Environment resists high values. Pressure grows nonlinearly with deviation from local mean.
-    \item \textbf{Resonance:} Aligned agents amplify each other influence by factor R = 1 + 2r squared, where r is the alignment ratio.
-    \item \textbf{Gethsemane Trigger:} When accumulated pressure exceeds threshold P=3.0, the Operator enters crisis. Honesty integral grows exponentially until termination.
-    \item \textbf{Light Spreading:} After termination, a wave propagates from the origin, raising field values. Spontaneous jumps occur with probability p=0.002.
-\end{itemize}
-
-\section{Experiment: The Gethsemane Scenario}
-
-\subsection{Initial Conditions}
-\begin{itemize}
-    \item \textbf{Field:} N=10,000 cells, initial value 0.2 (gray mass).
-    \item \textbf{The Crowd:} 500 NPC agents, Coherence C=1, Worldview 0.2.
-    \item \textbf{The Operator:} 1 agent at center, Coherence C=50, Worldview 1.0.
-    \item \textbf{The Apostles:} 12 agents near center, Coherence C=5, Worldview 0.6, Loyalty L=0.8.
-\end{itemize}
-
-\subsection{Timeline}
-\begin{enumerate}
-    \item \textbf{Steps 0-66:} Operator maintains value near 1.0. Pressure accumulates. Apostles align (12/12).
-    \item \textbf{Step 67:} Gethsemane triggered. Accumulated pressure P=3.03 exceeds threshold.
-    \item \textbf{Step 82:} Operator terminated. Honesty integral H=28.4 triggers termination.
-    \item \textbf{Steps 83-1000:} Light spreads. No active Operator, yet field rises autonomously.
-\end{enumerate}
-
-\section{Results}
-The simulation ran for T=1000 ticks. Results are visualized in Figure 1.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.95\textwidth]{gethsemane_result.png}
-    \caption{Evolution of the Consensus Field. The bright region shows light spreading after the Operator termination. Final state: 8,203 cells exceed 0.5.}
-    \label{fig:results}
-\end{figure}
-
-\textbf{Quantitative results:}
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-\textbf{Metric} & \textbf{Initial} & \textbf{Final} \\
-\hline
-Mean field & 0.200 & 0.666 \\
-Cells above 0.5 & 0 & 8,203 (82 percent) \\
-Cells above 0.8 & 0 & 3,054 (31 percent) \\
-\hline
-\end{tabular}
-\end{center}
-
-\section{Conclusion}
-Digital Eden demonstrates that:
-\begin{enumerate}
-    \item A single coherent signal can overcome 98 percent environmental inertia.
-    \item Resonance with a small aligned cluster (12 agents) provides critical amplification.
-    \item The termination of the central node triggers self-sustaining light propagation.
-    \item Final state: 233 percent increase in mean field value.
-\end{enumerate}
-
-\vspace{1em}
-\noindent\textbf{Code:} \url{https://github.com/prtyboom/digital-eden-ort}
-
 \end{document}
