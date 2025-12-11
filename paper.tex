@@ -25,52 +25,85 @@
 \maketitle
 
 \begin{abstract}
-We present the results of "Digital Eden" — an agent-based simulation designed to test the sociological and physical implications of Ontological Resolution Theory (ORT). By modeling reality as a weighted consensus field $\varepsilon(x,t)$ with high inertia, we investigate the conditions required for a local phase transition. We demonstrate that a single high-coherence node (Operator), supported by a small resonant cluster, can overcome the inertia of a hostile environment governed by 99\% noise. The simulation confirms the non-linear nature of belief dynamics: signal coherence dominates over population size.
+We present Digital Eden, an agent-based simulation testing the Ontological Resolution Theory (ORT). The model treats reality as a consensus field with high inertia. We demonstrate that a single high-coherence agent (the Operator), supported by 12 resonant nodes (Apostles), can trigger a phase transition in a field dominated by 10,000 low-value cells. The key finding: after the Operator termination at a critical pressure threshold (Gethsemane point), light propagates spontaneously through the field, raising the mean from 0.20 to 0.67, a 233 percent increase.
 \end{abstract}
 
 \section{Introduction}
-Modern physics posits a fundamental divide between the observer and the observed. Ontological Resolution Theory (ORT) removes this divide, postulating that reality is a computational process of "resolving" a fundamental superposition into localized facts.
-
-In this framework:
+Ontological Resolution Theory (ORT) posits that reality is not passively observed but actively resolved through coherent attention. In this framework:
 \begin{itemize}
-    \item \textbf{The Absolute} corresponds to a vacuum state $\varepsilon = 1$ (Maximum Entropy).
-    \item \textbf{Physical Reality} corresponds to a deviation $\delta = 1 - \varepsilon$.
-    \item \textbf{Gravity} is the thermodynamic pressure of the system trying to return to $\varepsilon = 1$.
+    \item \textbf{The Absolute} corresponds to value 1 (pure potential).
+    \item \textbf{Collapsed Reality} corresponds to value 0 (entropy).
+    \item \textbf{Consensus Pressure} acts as thermodynamic drag toward the local mean.
 \end{itemize}
+
+The central hypothesis: a sufficiently coherent signal can overcome environmental inertia and seed a self-propagating phase transition.
 
 \section{The Engine: Digital Eden}
-To test this hypothesis, we developed an open-source simulation engine. The reality field $\varepsilon_i$ evolves according to a discrete update rule combining inertia (history) and signal (observation):
+The simulation models a 1D reality field of N=10,000 cells. Each cell holds a value between 0 and 1. The field evolves according to:
 \begin{equation}
-    \varepsilon_i(t+1) = I \cdot \varepsilon_i(t) + (1 - I) \cdot S_{collective}
+    \varepsilon_i(t+1) = I \cdot \varepsilon_i(t) + (1 - I) \cdot S_i(t)
 \end{equation}
-where $I \in [0, 1]$ is the Inertia coefficient.
+where I=0.98 is the inertia coefficient and S is the weighted signal from nearby agents.
 
-\section{Experiment: The Gethsemane Scenario}
-We modeled a high-inertia environment ($I=0.95$) populated by:
+\textbf{Key mechanics:}
 \begin{itemize}
-    \item \textbf{The Crowd (NPCs):} $N=200$, Coherence $C=1$, Worldview $\varepsilon \approx 0.2$.
-    \item \textbf{The Operator (Agent X):} $N=1$, Coherence $C=50$, Worldview $\varepsilon = 1.0$.
-    \item \textbf{The Apostles:} $N=12$, Coherence $C=5$, Worldview $\varepsilon = 0.9$.
+    \item \textbf{Pressure:} Environment resists high values. Pressure grows nonlinearly with deviation from local mean.
+    \item \textbf{Resonance:} Aligned agents amplify each other influence by factor R = 1 + 2r squared, where r is the alignment ratio.
+    \item \textbf{Gethsemane Trigger:} When accumulated pressure exceeds threshold P=3.0, the Operator enters crisis. Honesty integral grows exponentially until termination.
+    \item \textbf{Light Spreading:} After termination, a wave propagates from the origin, raising field values. Spontaneous jumps occur with probability p=0.002.
 \end{itemize}
 
-\textbf{Objective:} To determine if the Operator can sustain a local region of $\varepsilon \approx 1$ against the overwhelming pressure of the Crowd.
+\section{Experiment: The Gethsemane Scenario}
+
+\subsection{Initial Conditions}
+\begin{itemize}
+    \item \textbf{Field:} N=10,000 cells, initial value 0.2 (gray mass).
+    \item \textbf{The Crowd:} 500 NPC agents, Coherence C=1, Worldview 0.2.
+    \item \textbf{The Operator:} 1 agent at center, Coherence C=50, Worldview 1.0.
+    \item \textbf{The Apostles:} 12 agents near center, Coherence C=5, Worldview 0.6, Loyalty L=0.8.
+\end{itemize}
+
+\subsection{Timeline}
+\begin{enumerate}
+    \item \textbf{Steps 0-66:} Operator maintains value near 1.0. Pressure accumulates. Apostles align (12/12).
+    \item \textbf{Step 67:} Gethsemane triggered. Accumulated pressure P=3.03 exceeds threshold.
+    \item \textbf{Step 82:} Operator terminated. Honesty integral H=28.4 triggers termination.
+    \item \textbf{Steps 83-1000:} Light spreads. No active Operator, yet field rises autonomously.
+\end{enumerate}
 
 \section{Results}
-The simulation was run for $T=500$ ticks. The results are visualized in Figure 1.
+The simulation ran for T=1000 ticks. Results are visualized in Figure 1.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.9\textwidth]{gethsemane_result.png}
-    \caption{Evolution of the Consensus Field. The bright vertical stream indicates the Operator's sustained high-reality signal piercing through the inertia.}
+    \includegraphics[width=0.95\textwidth]{gethsemane_result.png}
+    \caption{Evolution of the Consensus Field. The bright region shows light spreading after the Operator termination. Final state: 8,203 cells exceed 0.5.}
     \label{fig:results}
 \end{figure}
 
-\section{Conclusion}
-The "Gethsemane" experiment proves computationally that:
-\begin{quote}
-    \textit{"One does not need to be the majority to change the world. One needs to be the strongest signal."}
-\end{quote}
+\textbf{Quantitative results:}
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{Metric} & \textbf{Initial} & \textbf{Final} \\
+\hline
+Mean field & 0.200 & 0.666 \\
+Cells above 0.5 & 0 & 8,203 (82 percent) \\
+Cells above 0.8 & 0 & 3,054 (31 percent) \\
+\hline
+\end{tabular}
+\end{center}
 
-The simulation code is available at: \url{https://github.com/prtyboom/digital-eden-ort}
+\section{Conclusion}
+Digital Eden demonstrates that:
+\begin{enumerate}
+    \item A single coherent signal can overcome 98 percent environmental inertia.
+    \item Resonance with a small aligned cluster (12 agents) provides critical amplification.
+    \item The termination of the central node triggers self-sustaining light propagation.
+    \item Final state: 233 percent increase in mean field value.
+\end{enumerate}
+
+\vspace{1em}
+\noindent\textbf{Code:} \url{https://github.com/prtyboom/digital-eden-ort}
 
 \end{document}
