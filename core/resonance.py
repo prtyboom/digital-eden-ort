@@ -1,29 +1,35 @@
+"""
+Движок резонанса
+"""
 import numpy as np
 
-class ResonanceEngine:
-    def __init__(self, critical_mass=0.3):
-        self.critical_mass = critical_mass
 
-    def apply_synergy(self, agents, weights):
-        # Сортируем агентов по позиции
-        sorted_agents = sorted(agents, key=lambda a: a.position)
+class ResonanceEngine:
+    def __init__(self, threshold=0.1, amplification=2.5):
+        self.threshold = threshold
+        self.amplification = amplification
+    
+    def apply_synergy(self, agents, weights, field_size):
+        active_agents = [a for a in agents if a.is_active]
         
-        for i in range(len(sorted_agents)-1):
-            a1 = sorted_agents[i]
-            a2 = sorted_agents[i+1]
+        for agent in active_agents:
+            pos = int(np.clip(agent.position, 0, field_size - 1))
             
-            # Если агенты рядом (расстояние <= 1) и когерентны
-            if abs(a1.position - a2.position) <= 1:
-                if a1.coherence > 2 and a2.coherence > 2:
-                    # Геометрическое среднее (квадратичное усиление)
-                    synergy_boost = (a1.coherence * a2.coherence) ** 0.5
-                    
-                    # Усиливаем веса в точках нахождения агентов
-                    # Используем min/max чтобы не выйти за границы массива
-                    pos1 = int(np.clip(a1.position, 0, len(weights) - 1))
-                    pos2 = int(np.clip(a2.position, 0, len(weights) - 1))
-                    
-                    weights[pos1] += synergy_boost
-                    weights[pos2] += synergy_boost
-                    
+            neighbors = [
+                a for a in active_agents 
+                if a != agent and abs(a.position - agent.position) < 10
+            ]
+            
+            if not neighbors:
+                continue
+            
+            aligned = sum(
+                1 for n in neighbors 
+                if abs(n.worldview - agent.worldview) < self.threshold
+            )
+            
+            alignment_ratio = aligned / len(neighbors)
+            boost = 1.0 + (self.amplification - 1.0) * (alignment_ratio ** 2)
+            weights[pos] *= boost
+        
         return weights
