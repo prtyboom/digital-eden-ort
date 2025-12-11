@@ -31,40 +31,94 @@ We present Digital Eden, an agent-based simulation testing the Ontological Resol
 \section{Related Work}
 
 \subsection{Opinion Dynamics}
-The mathematical foundations of consensus formation have been extensively studied in statistical physics. Castellano et al. \cite{castellano2009} provide a comprehensive review of social dynamics models including the Voter model, Sznajd model, and bounded confidence models. These models demonstrate phase transitions in opinion space but treat opinions as abstract variables without ontological implications.
-
-Galam's sociophysics framework \cite{galam2012} shows that small committed minorities can overturn majority consensus through persistent signaling, a finding directly relevant to our Operator-Apostle dynamics.
+Castellano et al. \cite{castellano2009} provide a comprehensive review of social dynamics models including the Voter model, Sznajd model, and bounded confidence models. Galam \cite{galam2012} shows that small committed minorities can overturn majority consensus.
 
 \subsection{Leadership and Phase Transitions}
-Kacperski and Holyst \cite{kacperski2000} demonstrated phase transitions in agent systems with leaders, showing that a single high-influence node can reorganize collective behavior. Their model is structurally similar to our Central Agent, though without the termination-propagation mechanism.
-
-Moscovici's minority influence theory \cite{moscovici1976} provides empirical psychology foundations: consistent minorities change majorities not through power but through behavioral style (coherence).
+Kacperski and Holyst \cite{kacperski2000} demonstrated phase transitions in agent systems with leaders. Moscovici \cite{moscovici1976} provides empirical foundations: consistent minorities change majorities through behavioral coherence.
 
 \subsection{Critical Phenomena}
-Bak's self-organized criticality \cite{bak1987} shows that complex systems naturally evolve toward critical states where small perturbations can trigger system-wide avalanches. Our light spreading phase resembles such avalanche dynamics.
-
-Scheffer et al. \cite{scheffer2009} identified early-warning signals preceding critical transitions in complex systems. The Gethsemane point in our model, where pressure accumulation triggers irreversible change, exemplifies such a critical threshold.
-
-\subsection{Observer-Dependent Reality}
-The philosophical premise that observation participates in reality construction has roots in quantum mechanics interpretations. Stapp \cite{stapp2007} and Penrose \cite{penrose1994} argue for observer-dependent ontology, though their focus is individual consciousness rather than collective consensus.
+Bak \cite{bak1987} shows that complex systems evolve toward critical states where small perturbations trigger avalanches. Scheffer et al. \cite{scheffer2009} identified early-warning signals for critical transitions.
 
 \subsection{What is New}
-Existing models treat either (a) opinion dynamics without ontology, (b) leadership without sacrifice, or (c) consciousness without collective field dynamics. Digital Eden uniquely combines: reality as weighted consensus field, coherence-over-quantity influence, termination as phase transition trigger, and post-termination autonomous propagation. No prior work models the Gethsemane pattern: maximum pressure producing maximum honesty, leading to termination that seeds field-wide transformation.
+Digital Eden uniquely combines: reality as weighted consensus field, coherence-over-quantity influence, termination as phase transition trigger, and post-termination autonomous propagation.
 
 \section{Introduction}
-Ontological Resolution Theory (ORT) posits that reality is not passively observed but actively resolved through coherent attention. In this framework:
+Ontological Resolution Theory (ORT) posits that reality is actively resolved through coherent attention:
 \begin{itemize}
     \item \textbf{The Absolute} corresponds to value 1 (pure potential).
     \item \textbf{Collapsed Reality} corresponds to value 0 (entropy).
-    \item \textbf{Consensus Pressure} acts as thermodynamic drag toward the local mean.
+    \item \textbf{Consensus Pressure} acts as drag toward the local mean.
 \end{itemize}
 
-The central hypothesis: a sufficiently coherent signal can overcome environmental inertia and seed a self-propagating phase transition.
-
-\section{The Engine: Digital Eden}
-The simulation models a 1D reality field of N=10,000 cells. Each cell holds a value between 0 and 1. The field evolves according to:
+\section{The Engine}
+The simulation models a 1D field of N=10,000 cells evolving by:
 \begin{equation}
     \varepsilon_i(t+1) = I \cdot \varepsilon_i(t) + (1 - I) \cdot S_i(t)
 \end{equation}
-where I=0.98 is the inertia coefficient and S is the weighted signal from nearby agents.
+where I=0.98 is inertia and S is the weighted signal from agents.
+
+Key mechanics: Pressure (environment resists high values), Resonance (aligned agents amplify each other), Gethsemane Trigger (pressure exceeds threshold), Light Spreading (wave propagates after termination).
+
+\section{Experiment}
+
+\subsection{Initial Conditions}
+\begin{itemize}
+    \item Field: N=10,000 cells, initial value 0.2
+    \item Crowd: 500 NPCs, Coherence=1, Worldview=0.2
+    \item Operator: 1 agent, Coherence=50, Worldview=1.0
+    \item Apostles: 12 agents, Coherence=5, Worldview=0.6
+\end{itemize}
+
+\subsection{Timeline}
+\begin{enumerate}
+    \item Steps 0-66: Operator at 1.0, pressure accumulates
+    \item Step 67: Gethsemane triggered (P=3.03)
+    \item Step 82: Operator terminated (H=28.4)
+    \item Steps 83-1000: Light spreads autonomously
+\end{enumerate}
+
+\section{Results}
+Results are shown in Figure 1.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{gethsemane_result.png}
+    \caption{Field evolution. Light spreads after termination.}
+    \label{fig:results}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+Metric & Initial & Final \\
+\hline
+Mean field & 0.200 & 0.666 \\
+Cells above 0.5 & 0 & 8,203 \\
+Cells above 0.8 & 0 & 3,054 \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Conclusion}
+Digital Eden demonstrates:
+\begin{enumerate}
+    \item Single coherent signal overcomes 98 percent inertia
+    \item Small aligned cluster provides critical amplification
+    \item Termination triggers self-sustaining propagation
+    \item Result: 233 percent increase in mean field value
+\end{enumerate}
+
+\noindent\textbf{Code:} \url{https://github.com/prtyboom/digital-eden-ort}
+
+\begin{thebibliography}{99}
+\bibitem{castellano2009} Castellano, C. et al. (2009). Statistical physics of social dynamics. \textit{Rev. Mod. Phys.}, 81, 591.
+\bibitem{galam2012} Galam, S. (2012). \textit{Sociophysics}. Springer.
+\bibitem{kacperski2000} Kacperski, K., Holyst, J. (2000). Phase transitions with leaders. \textit{Physica A}, 287, 631.
+\bibitem{moscovici1976} Moscovici, S. (1976). \textit{Social Influence and Social Change}. Academic Press.
+\bibitem{bak1987} Bak, P. et al. (1987). Self-organized criticality. \textit{PRL}, 59, 381.
+\bibitem{scheffer2009} Scheffer, M. et al. (2009). Early-warning signals. \textit{Nature}, 461, 53.
+\bibitem{stapp2007} Stapp, H. (2007). \textit{Mindful Universe}. Springer.
+\bibitem{penrose1994} Penrose, R. (1994). \textit{Shadows of the Mind}. Oxford.
+\end{thebibliography}
+
 \end{document}
